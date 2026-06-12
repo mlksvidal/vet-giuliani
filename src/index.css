@@ -462,7 +462,13 @@ section {
   font-size: 0.75rem; /* 12px */
   font-weight: 400;
   line-height: 1.2;
-  opacity: 0.85;
+  color: #FFFFFF; /* Fix WCAG AA: #FFF sobre #C44B2B = 4.60:1 PASS — reemplaza opacity: 0.85 que daba 3.89:1 */
+}
+
+/* Fix WCAG AA: texto blanco sobre #25D366 = 1.98:1 FAIL                       */
+/* Override: #0D3320 sobre #25D366 ≈ 7.2:1 — PASS AAA                          */
+.emergency-cta-btn--whatsapp .emergency-cta-btn__sub {
+  color: #0D3320;
 }
 
 /* ── Desktop (≥768px): floating pill bottom-right ───────────────────────── */
@@ -1149,7 +1155,7 @@ section {
 .services-placeholder-note {
   margin-top: 2rem;
   font-size: 0.75rem;
-  color: var(--color-text-tertiary);
+  color: #5C3A1E; /* Fix WCAG: #5C3A1E sobre crema #FDF8F3 = 6.1:1 PASS AA — antes #A07050 era insuficiente */
   font-family: var(--font-body);
   text-align: center;
   font-style: italic;
@@ -1776,12 +1782,12 @@ section {
     box-shadow var(--duration-normal) var(--ease-in-out);
 }
 
-/* Estado top: el nav flota sobre el hero OSCURO — texto crema para legibilidad */
-/* .nav-bar sin .nav-bar--scrolled = posición top, hero chocolate de fondo     */
+/* Estado top: el nav flota sobre el hero OSCURO (#1A0F08) en todos los viewports */
+/* texto crema (#FDF8F3) garantiza contraste ~14:1 PASS AAA                       */
 .nav-bar:not(.nav-bar--scrolled) .nav-wordmark__main,
 .nav-bar:not(.nav-bar--scrolled) .nav-link,
 .nav-bar:not(.nav-bar--scrolled) .nav-hamburger {
-  color: #FDF8F3; /* crema — legible sobre #1A0F08 */
+  color: #FDF8F3;
 }
 
 .nav-bar:not(.nav-bar--scrolled) .nav-link::after {
@@ -1801,6 +1807,12 @@ section {
   backdrop-filter: blur(16px) saturate(1.4);
   -webkit-backdrop-filter: blur(16px) saturate(1.4);
   box-shadow: var(--shadow-sm);
+}
+
+/* Fix contraste WCAG AA: forzar texto oscuro en wordmark cuando el fondo crema es visible */
+/* #2C1A0E sobre rgba(253,248,243,0.92) ≈ 12:1 — PASS AAA */
+.nav-bar--scrolled .nav-wordmark__main {
+  color: #2C1A0E;
 }
 
 /* Inner: flex row con envelope */
