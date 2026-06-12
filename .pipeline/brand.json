@@ -1,0 +1,272 @@
+{
+  "project": "vet-giuliani",
+  "version": 2,
+  "schema_version": 2,
+  "created_at": "2026-06-11",
+
+  "identity": {
+    "name": "Giuliani Veterinaria",
+    "slogan": "Cuando tu mascota lo necesita, estamos.",
+    "tone": "cálido, confiable, directo, cercano — profesional sin frialdad clínica. Español rioplatense.",
+    "personality": ["cuidado genuino", "disponibilidad real", "calidez humana", "confianza experta"],
+    "target": "Dueños de mascotas en San Rafael, Mendoza. Público amplio que incluye personas en situación de emergencia con su animal. Mobile-first crítico — la persona desesperada a las 3am con su mascota enferma.",
+    "voice": {
+      "formality": 2,
+      "complexity": 1,
+      "character": 2,
+      "emotion": 5
+    },
+    "copy_examples": {
+      "urgencias_cta_primary": "Llamar ahora — urgencias 24h",
+      "urgencias_cta_whatsapp": "WhatsApp urgencias",
+      "hero_headline": "Tu mascota en manos de quien sabe",
+      "hero_subhead": "Atención veterinaria de urgencias en San Rafael. Te atendemos cuando lo necesitás.",
+      "trust_badge": "Urgencias 24 horas",
+      "calm_reassurance": "Estamos para ayudarte ahora.",
+      "services_intro": "De urgencias a control rutinario — siempre cerca.",
+      "empty_state_contact": "¿Emergencia? No esperes — llamá directamente."
+    },
+    "voice_notes": "Tutear siempre. Nunca 'cliente' — decir 'vos', 'tu mascota'. En urgencias: directo y calmo — el tono no alarmista es parte del servicio. Evitar jerga clínica con el dueño. Breve y accionable en CTAs."
+  },
+
+  "colors": {
+    "primary": {
+      "hex": "#C44B2B",
+      "name": "terracota urgencia",
+      "dark_variant": "#A33820",
+      "on_color": "#FFFFFF",
+      "contrast_ratio": "4.87:1 — WCAG AA ✅",
+      "use": "CTA principal (llamar/urgencias), highlights críticos, borde énfasis, badge urgencias. Evoca calidez y acción inmediata sin alarmismo."
+    },
+    "secondary": {
+      "hex": "#E8943A",
+      "name": "ámbar",
+      "dark_variant": "#C87A28",
+      "on_color": "#2C1A0E",
+      "use": "Badges, tags, acentos visuales (horarios, disponibilidad). Solo texto ≥18px sobre crema — contraste 3.1:1."
+    },
+    "accent": {
+      "hex": "#6B8F71",
+      "name": "verde salvia",
+      "dark_variant": "#4A6B50",
+      "on_color": "#FFFFFF",
+      "use": "Confianza, checkmarks, indicadores positivos, secciones de servicios preventivos."
+    },
+    "neutral": {
+      "hex": "#FDF8F3",
+      "name": "crema cálida",
+      "secondary_neutral": "#F7EDE0",
+      "tertiary_neutral": "#EEE0CC",
+      "use": "Fondo primario de página. Warm white — nunca blanco puro (#FFFFFF) como fondo base."
+    },
+    "text_dark": {
+      "hex": "#2C1A0E",
+      "name": "marrón casi negro cálido",
+      "secondary": "#6B4226",
+      "tertiary": "#A07050",
+      "use": "Texto principal sobre fondos crema/arena. Marrón cálido — nunca negro frío (#000000)."
+    },
+    "text_light": {
+      "hex": "#FFFFFF",
+      "on_dark_variant": "#F5ECD8",
+      "use": "Texto sobre CTA terracota y fondos oscuros."
+    },
+    "special": {
+      "whatsapp": "#25D366",
+      "whatsapp_dark": "#1DA851",
+      "whatsapp_text": "#1A3D26",
+      "whatsapp_note": "NUNCA texto blanco sobre #25D366 — contraste 1.78:1 falla WCAG AA",
+      "destructive": "#B91C1C"
+    }
+  },
+
+  "typography": {
+    "heading": {
+      "family": "Playfair Display",
+      "weights": ["400", "600", "700"],
+      "style": ["normal", "italic"],
+      "source": "google_fonts",
+      "url": "https://fonts.google.com/specimen/Playfair+Display",
+      "css_var": "--font-display",
+      "fallback": "Georgia, 'Times New Roman', serif",
+      "tracking": "-0.02em",
+      "use": "Todos los titulares (h1–h3), citas de testimonios, texto hero. Italics para énfasis emocional."
+    },
+    "body": {
+      "family": "DM Sans",
+      "weights": ["300", "400", "500", "600"],
+      "style": ["normal", "italic"],
+      "source": "google_fonts",
+      "url": "https://fonts.google.com/specimen/DM+Sans",
+      "css_var": "--font-body",
+      "fallback": "system-ui, -apple-system, sans-serif",
+      "use": "Cuerpo de texto, UI (botones, labels, nav), subtítulos (h4–h6), copy informativo."
+    },
+    "accent": {
+      "family": "DM Mono",
+      "weights": ["400", "500"],
+      "source": "google_fonts",
+      "url": "https://fonts.google.com/specimen/DM+Mono",
+      "css_var": "--font-mono",
+      "fallback": "'Courier New', monospace",
+      "tracking": "0.1em",
+      "use": "Eyebrows en mayúscula con tracking widest, números de teléfono en contexto de emergencia, horarios tabulares, badges de urgencias."
+    }
+  },
+
+  "typography_pair": {
+    "heading": "Playfair Display",
+    "body": "DM Sans",
+    "accent": "DM Mono",
+    "google_fonts_url": "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap",
+    "rationale": "Playfair Display (serif editorial) transmite calidez y autoridad profesional sin frialdad clínica — ideal para urgencias donde necesitás transmitir confianza. DM Sans (humanist sans) garantiza legibilidad extrema en mobile bajo estrés, caracteres inequívocos. DM Mono (familia DM) para datos críticos de contacto — el teléfono de urgencias en mono aumenta el escaneo visual. Trío coherente de la misma superfamilia tipográfica."
+  },
+
+  "mood_vector": {
+    "editorial": 7,
+    "minimal": 2,
+    "luxury": 5,
+    "brutalist": 0,
+    "immersive": 4,
+    "playful": 2,
+    "retro": 0,
+    "industrial": 0
+  },
+
+  "reference_ids": [],
+
+  "anti_patterns_HIGH": [
+    "NO teal (#0D9488 ni variantes) en ningún elemento — paleta es terracota/ámbar/crema/salvia exclusivamente",
+    "NO azul clínico frío — ningún blue-* en elementos principales, botones ni headings",
+    "NO Inter como fuente de titulares — heading font es Playfair Display sin excepción",
+    "NO esconder CTA urgencias — visible sin scroll en 375px + sticky bottom mobile + z-index 1040",
+    "NO animaciones que demoren o bloqueen el CTA urgencias — botón clickeable ANTES de que termine cualquier timeline GSAP",
+    "NO prefers-reduced-motion ausente — guard global CSS OBLIGATORIO + Lenis desinstanciar si reduce",
+    "NO tap targets <44x44px en CTA urgencias ni navegación mobile",
+    "NO container max-width ≤1280px rígido (SaaS feel) — usar --envelope-max 1600px",
+    "NO imágenes placeholder genéricas (picsum, unsplash random, stock azul-gris) — gradientes cálidos o assets generados con brief de marca",
+    "NO shadow-sm uniforme en todas las cards — escala de sombras cálidas por elevación rgba(44,26,14,0.08-0.15)",
+    "NO texto blanco sobre #25D366 WhatsApp — contraste 1.78:1 falla WCAG AA, usar #1A3D26 sobre verde",
+    "NO huellitas de mascotas como confetti decorativo — MÁXIMO 1 trazo conector sutil entre secciones, dosificado",
+    "NO gradientes purple/teal sobre blanco — solo gradientes warm dentro de la paleta (crema→terracota, crema→ámbar)",
+    "NO estética veterinaria stock (patas azules + blanco aséptico + tipografía genérica) — identidad editorial cálida"
+  ],
+
+  "extraction_metadata": {
+    "source": "brand_textual",
+    "confidence": 97,
+    "figma_raster_detected": false,
+    "palette_hex_raw": ["#C44B2B", "#E8943A", "#6B8F71", "#FDF8F3", "#F7EDE0", "#2C1A0E"],
+    "palette_source": "css-foundation obs #866 aprobado por usuario en checkpoint Paso 1.5 (obs #870)",
+    "typography_inferred_confidence": 99,
+    "awesome_design_md_consulted": [],
+    "notes": "Paleta y tipografía 100% derivadas del css-foundation aprobado — no se inventó identidad nueva. Se formalizaron tokens existentes en roles semánticos schema v2 y se amplió con copy examples, voice_notes, logo strategy y asset specs detallados."
+  },
+
+  "logo": {
+    "strategy": "wordmark-tipografico",
+    "agent": "SKIP — logo-agent no requerido (decisión checkpoint Paso 1.5)",
+    "implementation": "CSS/SVG en código — no generar con IA",
+    "primary_wordmark": "\"Giuliani Veterinaria\" en Playfair Display 700 en terracota #C44B2B sobre crema #FDF8F3",
+    "favicon_concept": "Inicial G en Playfair Display italic 700 en crema #FDF8F3 sobre badge circular terracota #C44B2B",
+    "variations": [
+      "light — texto terracota sobre crema (uso en header light)",
+      "dark — texto crema #FDF8F3 sobre terracota (uso en CTAs, footer oscuro)",
+      "monochrome — texto marrón #2C1A0E sobre crema (impresión)"
+    ],
+    "anti_patterns": [
+      "NO iconos de patas de mascota como marca-símbolo",
+      "NO estetoscopio ni cruz veterinaria clínica",
+      "NO font genérica para la marca — SOLO Playfair Display"
+    ]
+  },
+
+  "asset_specs": {
+    "logo_wordmark": {
+      "type": "text-based",
+      "width": 400,
+      "height": 80,
+      "bg": "transparent",
+      "formats": ["SVG", "PNG"],
+      "variants": ["light_on_cream", "terracota_on_cream", "cream_on_terra", "monochrome"],
+      "agent": "SKIP — implementar en CSS/SVG"
+    },
+    "favicon": {
+      "type": "text-based",
+      "width": 512,
+      "height": 512,
+      "bg": "#C44B2B",
+      "formats": ["PNG", "ICO", "SVG"],
+      "content": "G Playfair italic 700 en #FDF8F3",
+      "agent": "SKIP — implementar en SVG"
+    },
+    "hero_image": {
+      "id": "img-hero",
+      "width": 900,
+      "height": 1125,
+      "aspect_ratio": "4:5",
+      "format": "JPG",
+      "quality": 85,
+      "variants": ["desktop_900x1125", "mobile_600x750"],
+      "placement": "bloque derecho asimétrico del hero — desborda el grid hacia el borde derecho del viewport",
+      "prompt_en": "A warm-toned veterinarian gently examining a calm dog on a wooden consultation table. Golden hour light streaming through a window. Soft terracotta and amber tones, warm cream walls. Shallow depth of field. Photorealistic editorial photography style. No cold clinical lighting, no white sterile background, no blue tones.",
+      "prompt_negative": "teal, blue, cold light, sterile white, clinical fluorescent, stock photo feel, watermark, text overlay, logo, UI elements, cartoon, illustration, 3D render",
+      "color_grade": "warm golden-hour — terracotta highlights, cream shadows, no cyan cast",
+      "mood": "trustworthy, warm, professional, golden hour editorial"
+    },
+    "about_portrait": {
+      "id": "img-about",
+      "width": 750,
+      "height": 1000,
+      "aspect_ratio": "3:4",
+      "format": "JPG",
+      "quality": 85,
+      "placement": "sección sobre el Dr. Giuliani — retrato asimétrico con nombre en Playfair superpuesto",
+      "prompt_en": "A friendly, approachable male veterinarian in his 30s-40s, wearing a warm-toned beige lab coat. Smiling naturally, holding a small dog or cat. Warm studio lighting with blurred terracotta and cream background. Portrait orientation. Editorial photography style.",
+      "prompt_negative": "cold light, blue tones, teal, white sterile coat on white background, stock photo forced smile, watermark, text, logo, cartoon",
+      "color_grade": "warm amber-cream — rich warm skin tones, no desaturation",
+      "mood": "human, approachable, confident, caring"
+    },
+    "services_texture": {
+      "id": "img-texture-services",
+      "width": 1200,
+      "height": 800,
+      "aspect_ratio": "3:2",
+      "format": "JPG",
+      "quality": 80,
+      "placement": "fondo de sección Servicios — baja opacidad, no distrae del texto",
+      "prompt_en": "Close-up macro of gentle human hands tenderly holding a cat's paw on a warm wooden surface. Golden light, shallow depth of field, amber and terracotta color palette. Calm, intimate. Editorial macro photography.",
+      "prompt_negative": "clinical, cold light, teal, blue cast, white background, sterile gloves, sad animal, watermark, text, logo, 3D render",
+      "color_grade": "golden macro — amber highlights, warm cream background",
+      "mood": "tender, intimate, trust, warmth"
+    },
+    "og_image": {
+      "id": "img-og",
+      "width": 1200,
+      "height": 630,
+      "format": "PNG",
+      "bg": "#C44B2B",
+      "content": "Wordmark Giuliani Veterinaria en #FDF8F3 Playfair Display + badge urgencias 24h ámbar + tagline DM Sans + San Rafael Mendoza",
+      "prompt_en": "Social media open graph card. Terracotta background. Cream serif text 'Giuliani Veterinaria'. Subtitle 'Urgencias 24h · San Rafael, Mendoza' in sans font. Amber accent badge. Minimal warm design, no photos.",
+      "notes": "Puede generarse como composición HTML → screenshot o con image-agent"
+    }
+  },
+
+  "prompt_ingredients": {
+    "style_tags": [
+      "golden hour editorial photography",
+      "warm terracotta palette",
+      "soft luxury veterinary",
+      "amber cream tones",
+      "cozy clinic aesthetic",
+      "trustworthy professional",
+      "natural warm light",
+      "shallow depth of field",
+      "intimate animal care",
+      "Mendoza Argentina warmth"
+    ],
+    "photo_style": "Editorial warm photography with golden-hour lighting. Terracotta, amber and cream color palette throughout. Shallow depth of field. Photorealistic. No cold clinical lighting, no teal or blue cast, no sterile white backgrounds. Subjects feel calm, cared-for, safe. Warm Argentina regional aesthetic.",
+    "logo_style": "SKIP — wordmark tipográfico Playfair Display implementado en CSS/SVG, no generado con IA.",
+    "avoid_global": "watermark, text overlay, logo, UI elements, borders, frame, cartoon, 3D render, teal, cold blue, blue clinical colors, sterile white backgrounds, fluorescent clinical lighting, stock photo aesthetic, generic veterinary clipart, saturated paw print confetti, purple gradients, cyan cast"
+  }
+}

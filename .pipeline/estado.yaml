@@ -1,0 +1,34 @@
+proyecto: "vet-giuliani"
+tipo: "web"
+estructura: "single-repo"
+project_dir: "/Users/lucas/Documents/vet-giuliani"
+stack:
+  frontend: "Vite+React+TypeScript"
+  css: "Tailwind 4"
+  backend: "none"
+  motion: "GSAP + ScrollTrigger + Lenis (Tier 3)"
+  design_system: "custom"
+  component_source: "21st.dev"
+  deploy_target: "Vercel"
+references_loaded: [react-patterns, better-gsap, scroll-storytelling, advanced-effects]
+fase_actual: "fase_3_dev"
+fases_completadas:
+  intent: 861
+  planificacion: 862
+desarrollo:
+  total_tareas: 8
+  tarea_actual: 0
+  ultimo_save: "2026-06-11T21:45:00-03:00"
+notas: "Fase 1 completa, pendiente aprobación scope usuario. Intent #861, tareas #862."
+
+fase_2_completada: {css: 866, visual_direction: confirmado, design: 873, security: 871}
+assets: {branding: 874, aprobado: true, logo: no-requerido (wordmark SVG/CSS inline), images: no-requerido (decision usuario - sin IA, gradientes + listo para fotos reales), video: no-requerido (hero = gradiente animado)}
+
+fase_3:
+  tarea_0: {status: PASS, rating: B-, dev_obs: 876, qa: qa-0, intento: 1}
+  pendientes_tarea_7: [".env.example (hook bloquea — crear manual o skip, sin env vars)", "README contenido real"]
+  ultimo_save: "2026-06-12"
+
+  tarea_1: {status: PASS, rating: B, intento: 2, fix: CSP-google-fonts}
+  tarea_2: {status: PASS, rating: B+, intento: 1, dev_obs: 884}
+  tarea_actual: 3

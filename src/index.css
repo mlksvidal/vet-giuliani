@@ -1,0 +1,2474 @@
+@import "tailwindcss";
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Veterinaria Giuliani — Design Tokens
+   Sistema: soft-luxury-warm · motion_intensity 9 · design_variance 7
+   ────────────────────────────────────────────────────────────────────────── */
+
+/* ── Tailwind 4 @theme ─────────────────────────────────────────────────── */
+@theme {
+  /* Colores del brand */
+  --color-primary:          #C44B2B;
+  --color-primary-dark:     #A33820;
+  --color-secondary:        #E8943A;
+  --color-secondary-dark:   #C87A28;
+  --color-accent:           #6B8F71;
+  --color-accent-dark:      #4A6B50;
+  --color-whatsapp:         #25D366;
+  --color-whatsapp-dark:    #1DA851;
+
+  /* Fondos */
+  --color-bg:               #FDF8F3;
+  --color-bg-secondary:     #F7EDE0;
+  --color-bg-tertiary:      #EEE0CC;
+  --color-bg-accent-warm:   #FFF3E8;
+
+  /* Texto */
+  --color-text:             #2C1A0E;
+  --color-text-secondary:   #6B4226;
+  --color-text-tertiary:    #A07050;  /* solo para texto sobre fondos oscuros / decorativo */
+  --color-text-muted:       #7A4820;  /* accesible sobre crema #FDF8F3 — ratio 7.17:1 ✅ AAA */
+  --color-text-emphasis:    #1A0A04;
+  --color-text-on-cta:      #FFFFFF;
+
+  /* Bordes */
+  --color-border:           #D4B896;
+  --color-border-emphasis:  #C44B2B;
+
+  /* Estados */
+  --color-success:          #4A7C59;
+  --color-error:            #B91C1C;
+  --color-warning:          #B45309;
+  --color-ring:             #C44B2B;
+
+  /* Tipografía */
+  --font-display:           'Playfair Display', Georgia, serif;
+  --font-body:              'DM Sans', system-ui, sans-serif;
+  --font-mono:              'DM Mono', 'Courier New', monospace;
+
+  /* Radios */
+  --radius-sm:              4px;
+  --radius-base:            8px;
+  --radius-md:              12px;
+  --radius-lg:              16px;
+  --radius-xl:              24px;
+  --radius-full:            9999px;
+
+  /* Breakpoints */
+  --breakpoint-2xl:         1600px;
+}
+
+/* ── Custom properties (:root) ─────────────────────────────────────────── */
+:root {
+  /* Escala de color — primary terracota 9 pasos */
+  --primary-100: #F9E8E3;
+  --primary-200: #F3D1C7;
+  --primary-300: #EDBAAB;
+  --primary-400: #E7A38F;
+  --primary-500: #C44B2B;
+  --primary-600: #A33820;
+  --primary-700: #822B16;
+  --primary-800: #611E0E;
+  --primary-900: #3E1108;
+
+  /* Escala secondary ámbar */
+  --secondary-100: #FDF2E5;
+  --secondary-200: #FAE4CB;
+  --secondary-300: #F7D6B1;
+  --secondary-400: #F4C897;
+  --secondary-500: #E8943A;
+  --secondary-600: #C87A28;
+  --secondary-700: #A06018;
+  --secondary-800: #78460C;
+  --secondary-900: #4D2C09;
+
+  /* Escala accent salvia */
+  --accent-100: #EDF3EE;
+  --accent-200: #DAE7DC;
+  --accent-300: #C7DBCA;
+  --accent-400: #B4CFB8;
+  --accent-500: #6B8F71;
+  --accent-600: #4A6B50;
+  --accent-700: #364F3B;
+  --accent-800: #223427;
+  --accent-900: #111A13;
+
+  /* Tokens funcionales semánticos */
+  --primary-text-emphasis:  #A33820;
+  --primary-bg-subtle:      #F9E8E3;
+  --primary-border-subtle:  #F3D1C7;
+
+  /* Sombras cálidas (base: #2C1A0E) */
+  --shadow-sm:       0 1px 3px rgba(44, 26, 14, 0.08);
+  --shadow-md:       0 4px 12px rgba(44, 26, 14, 0.10);
+  --shadow-lg:       0 12px 32px rgba(44, 26, 14, 0.12);
+  --shadow-xl:       0 24px 48px rgba(44, 26, 14, 0.15);
+  --shadow-accent:   0 8px 24px rgba(196, 75, 43, 0.35);
+  --shadow-whatsapp: 0 8px 24px rgba(37, 211, 102, 0.30);
+
+  /* Motion / easings */
+  --ease-primary:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out:       cubic-bezier(0.0, 0.0, 0.2, 1);
+  --ease-in-out:    cubic-bezier(0.4, 0, 0.2, 1);
+
+  --duration-fast:    250ms;
+  --duration-normal:  400ms;
+  --duration-slow:    700ms;
+  --duration-reveal:  900ms;
+  --duration-stagger: 80ms;
+
+  /* Escala tipográfica fluid */
+  --text-hero: clamp(2.75rem, 1.5rem + 4.5vw, 5.5rem);
+  --text-4xl:  clamp(2.25rem, 1.5rem + 2.5vw, 3.5rem);
+  --text-3xl:  clamp(1.875rem, 1.25rem + 2vw, 2.75rem);
+  --text-2xl:  clamp(1.5rem, 1.125rem + 1.2vw, 2rem);
+  --text-xl:   clamp(1.25rem, 1rem + 0.8vw, 1.5rem);
+  --text-lg:   clamp(1.0625rem, 0.95rem + 0.4vw, 1.25rem);
+  --text-base: clamp(0.9375rem, 0.875rem + 0.2vw, 1rem);
+
+  --tracking-tight:   -0.02em;
+  --tracking-widest:  0.1em;
+
+  /* Espaciado */
+  --space-section: clamp(4rem, 3rem + 4vw, 8rem);
+  --space-cta-tap: 2.75rem; /* 44px tap target mínimo */
+
+  /* Envelope content (container-bold) */
+  --envelope-max: 1600px;
+  --envelope-px:  max(24px, 5vw);
+
+  /* Scroll padding (ajustar en Tarea 6 con altura real del nav) */
+  --scroll-pad-top: 5rem;
+
+  /* Z-index scale */
+  --z-base:      0;
+  --z-raised:    10;
+  --z-dropdown:  1000;
+  --z-sticky:    1010;
+  --z-overlay:   1020;
+  --z-modal:     1030;
+  --z-emergency: 1040;
+  --z-toast:     1050;
+}
+
+/* ── Tema: LIGHT ONLY ──────────────────────────────────────────────────── */
+/* El hero es oscuro por diseño scoped (.hero-section), no por color-scheme.
+   No existe dark mode en este sitio — el look aprobado es siempre el mismo
+   independientemente del OS del visitante. */
+
+/* ── Global resets ──────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: var(--scroll-pad-top);
+  color-scheme: light; /* LIGHT ONLY — sin inversión OS */
+  overflow-x: hidden;  /* defensa doble con body — elimina scroll horizontal espurio */
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--duration-normal) var(--ease-in-out),
+              color var(--duration-normal) var(--ease-in-out);
+  /* Fix: nav-drawer con translateX(100%) sumaba 79px al scrollWidth en mobile.
+     overflow-x:hidden en body elimina el scroll horizontal espurio sin afectar
+     position:fixed ni sticky (estos se posicionan respecto al viewport, no al body). */
+  overflow-x: hidden;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Tipografía base ────────────────────────────────────────────────────── */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.1;
+  color: var(--color-text-emphasis);
+  font-weight: 700;
+}
+
+h4, h5, h6 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  color: var(--color-text);
+}
+
+h1 { font-size: var(--text-hero); }
+h2 { font-size: var(--text-4xl);  }
+h3 { font-size: var(--text-2xl);  }
+h4 { font-size: var(--text-xl);   }
+
+p {
+  color: var(--color-text);
+  max-width: 65ch;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+}
+
+/* Focus visible ring cálido */
+:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  padding: 0.75rem 1.25rem;
+  background: var(--color-primary);
+  color: var(--color-text-on-cta);
+  font-family: var(--font-body);
+  font-weight: 600;
+  border-radius: var(--radius-base);
+  z-index: var(--z-toast);
+  transition: none;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+/* ── Eyebrow / caption / mono ───────────────────────────────────────────── */
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-primary);
+}
+
+/* FIX QA CONTRASTE: .eyebrow en fondos crema (#F7EDE0 / #FDF8F3) = 2.08-2.25:1 ❌
+   --primary-800 #611E0E en #F7EDE0 = 4.73:1 ✅  en #FDF8F3 = 5.10:1 ✅
+   Scope a about-section y location-section para preservar eyebrow en hero (fondo oscuro). */
+.about-section .eyebrow,
+.location-section .eyebrow {
+  color: var(--primary-800); /* #611E0E */
+}
+
+.caption {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--color-text-tertiary);
+}
+
+.mono-data {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Layout / envelope ──────────────────────────────────────────────────── */
+.container-bold {
+  width: 100%;
+  max-width: var(--envelope-max);
+  margin-inline: auto;
+  padding-inline: var(--envelope-px);
+}
+
+.section-pad {
+  padding-block: var(--space-section);
+}
+
+/* Section bg siempre full-bleed — el contenido usa container-bold */
+section {
+  width: 100%;
+}
+
+/* ── Utility clases ─────────────────────────────────────────────────────── */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* FIX QA CONTRASTE: opacity 0.65 con color heredado → effective ~#be9c82 = 2.16:1 ❌
+   #5C3A1E sin opacity en fondos crema = 4.73-5.10:1 ✅
+   Mantiene carácter "secundario/pendiente" con color fijo más oscuro. */
+.placeholder-pending {
+  font-style: italic;
+  color: #5C3A1E;
+  opacity: 1;
+}
+
+.placeholder-pending::after {
+  content: ' *';
+  color: var(--color-secondary);
+  font-style: normal;
+  font-size: 0.75em;
+}
+
+/* ── EmergencyCTA — Barra fija de urgencias (z-emergency 1040) ─────────── */
+/*
+   Estados:
+   .emergency-cta-bar                → estructura base (position fixed, flex, sombra)
+   .emergency-cta-bar--hidden        → estado inicial JS: translateY(100%) oculto
+   .emergency-cta-bar--visible       → JS quita --hidden y agrega --visible: slide-up
+   Sin --hidden ni --visible: fallback estático si JS falla — visible directo.
+   pointer-events: auto SIEMPRE — nunca bloquear el toque/clic.
+*/
+
+/* ── Keyframe: pulso sutil en el botón de llamada ────────────────────────
+   Llama la atención sin distraer. Solo bajo prefers-reduced-motion: no-preference.
+   Usa box-shadow para el glow (no transform) → no causa layout shift ni CLS. */
+@keyframes emergency-pulse {
+  0%   { box-shadow: 0 -4px 24px rgba(44, 26, 14, 0.18), 0 0 0 0 rgba(196, 75, 43, 0); }
+  50%  { box-shadow: 0 -4px 24px rgba(44, 26, 14, 0.18), 0 0 0 6px rgba(196, 75, 43, 0.25); }
+  100% { box-shadow: 0 -4px 24px rgba(44, 26, 14, 0.18), 0 0 0 0 rgba(196, 75, 43, 0); }
+}
+
+/* Variante desktop del pulso (sin borde superior, con shadow-xl) */
+@keyframes emergency-pulse-desktop {
+  0%   { box-shadow: var(--shadow-xl), 0 0 0 1px rgba(44, 26, 14, 0.08), 0 0 0 0 rgba(196, 75, 43, 0); }
+  50%  { box-shadow: var(--shadow-xl), 0 0 0 1px rgba(44, 26, 14, 0.08), 0 0 0 8px rgba(196, 75, 43, 0.20); }
+  100% { box-shadow: var(--shadow-xl), 0 0 0 1px rgba(44, 26, 14, 0.08), 0 0 0 0 rgba(196, 75, 43, 0); }
+}
+
+.emergency-cta-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-emergency); /* 1040 */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  pointer-events: auto; /* nunca off */
+  /* Sombra cálida prominente */
+  box-shadow: 0 -4px 24px rgba(44, 26, 14, 0.18);
+  /* Borde superior sutil */
+  border-top: 1px solid rgba(44, 26, 14, 0.10);
+}
+
+/* Estado inicial oculto — JS lo quita para hacer el slide-up */
+.emergency-cta-bar--hidden {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+/* Estado visible con transición — JS agrega esta clase */
+.emergency-cta-bar--visible {
+  transition:
+    transform 400ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 300ms ease;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Pulso separado en clase propia — se agrega DESPUÉS de que la transición termina
+   (JS: setTimeout 420ms), nunca en la misma regla que 'transition'.
+   Tener animation en la misma regla que transition causa que el browser
+   recalcule la cascade en cada frame del keyframe y reinicie la transición. */
+@media (prefers-reduced-motion: no-preference) {
+  .emergency-cta-bar--pulsing {
+    animation: emergency-pulse 3s ease-in-out 0s 3; /* 3 pulsos, delay 0 porque ya esperó en JS */
+  }
+}
+
+/* Botones dentro de la barra */
+.emergency-cta-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  flex: 1;
+  /* Tap target mínimo 44px — el bar en mobile es 64px */
+  min-height: 64px;
+  padding: 10px 12px;
+  text-decoration: none;
+  font-family: var(--font-body);
+  border: none;
+  cursor: pointer;
+  transition:
+    filter var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+  /* No outline default — :focus-visible en su lugar */
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.emergency-cta-btn:active {
+  transform: scale(0.97);
+  filter: brightness(0.92);
+}
+
+@media (hover: hover) {
+  .emergency-cta-btn:hover {
+    filter: brightness(0.92);
+    transform: translateY(-1px);
+  }
+}
+
+/* Variante Llamar — terracota #C44B2B, texto blanco 4.87:1 ✅ */
+.emergency-cta-btn--call {
+  background-color: var(--color-primary);      /* #C44B2B */
+  color: #FFFFFF;
+}
+
+/* Variante WhatsApp — verde #25D366, texto oscuro #2C1A0E 6.20:1 ✅
+   CRÍTICO: texto blanco sobre #25D366 = 1.78:1 ❌ PROHIBIDO */
+.emergency-cta-btn--whatsapp {
+  background-color: var(--color-whatsapp);     /* #25D366 */
+  color: #2C1A0E;                              /* OBLIGATORIO — nunca blanco */
+}
+
+/* Divider vertical */
+.emergency-cta-divider {
+  width: 1px;
+  background-color: rgba(44, 26, 14, 0.12);
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
+/* Texto del botón */
+.emergency-cta-btn__label {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9375rem; /* 15px */
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.emergency-cta-btn__sub {
+  font-family: var(--font-body);
+  font-size: 0.75rem; /* 12px */
+  font-weight: 400;
+  line-height: 1.2;
+  opacity: 0.85;
+}
+
+/* ── Desktop (≥768px): floating pill bottom-right ───────────────────────── */
+@media (min-width: 768px) {
+  .emergency-cta-bar {
+    left: auto;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    border-radius: var(--radius-lg); /* 16px */
+    border-top: none;
+    box-shadow:
+      var(--shadow-xl),
+      0 0 0 1px rgba(44, 26, 14, 0.08);
+    width: auto;
+    min-width: 320px;
+  }
+
+  /* Pulso desktop — misma separación de clases que mobile */
+  @media (prefers-reduced-motion: no-preference) {
+    .emergency-cta-bar--pulsing {
+      animation: emergency-pulse-desktop 3s ease-in-out 0s 3;
+    }
+  }
+
+  .emergency-cta-btn {
+    padding: 14px 20px;
+    min-height: 56px;
+  }
+
+  /* Bordes redondeados en los extremos de la barra */
+  .emergency-cta-btn--call {
+    border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+  }
+
+  .emergency-cta-btn--whatsapp {
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  }
+}
+
+/* ── Large desktop (≥1024px): ligeramente más grande ───────────────────── */
+@media (min-width: 1024px) {
+  .emergency-cta-bar {
+    min-width: 360px;
+  }
+
+  .emergency-cta-btn__label {
+    font-size: 1rem;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   HERO SECTION
+   Layout: asimétrico 55/45 | Fondo: oscuro chocolate #1A0F08 (aprobado)
+   Implementación: Hero.tsx (Tarea 3) — formas orgánicas SVG + parallax GSAP
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Sección hero ──────────────────────────────────────────────────────── */
+/*
+   THEME LOCK: el hero es SIEMPRE oscuro chocolate, independientemente del
+   color-scheme del OS. Colores extraídos del look aprobado (dark render):
+     fondo chocolate:  #1A0F08
+     texto principal:  #FDF8F3 (crema claro)
+     texto secundario: #C4A882
+     texto terciario:  #8A6A4A
+     énfasis:          #FDF8F3
+     terracota acento: #E05C36 (versión ligeramente más saturada sobre oscuro)
+     borde:            #4A2E18
+   Los tokens CSS se sobreescriben con scope .hero-section para que
+   NINGÚN componente hijo herede los valores del light theme.
+   RESTAURADO en fix-hero-regression (2026-06-11): la Tarea 7 removió los
+   overrides oscuros y reemplazó el fondo por #FDF8F3 crema. Se vuelve al
+   estado aprobado en el checkpoint con el usuario.
+*/
+.hero-section {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  /* Padding bottom extra para no solapar con el EmergencyCTA sticky mobile */
+  padding-bottom: 5rem;
+
+  /* ── Fondo oscuro chocolate — aprobado por el usuario en checkpoint ── */
+  background-color: #1A0F08;
+
+  /* ── Override scoped de tokens para el hero oscuro ────────────────── */
+  /* Estos overrides ganan sobre :root porque tienen mayor especificidad  */
+  /* (.hero-section > :root). Todos los hijos heredan versión oscura.    */
+  --color-text-emphasis: #FDF8F3;
+  --color-text:          #FDF8F3;
+  --color-text-secondary: #C4A882;
+  --color-text-tertiary:  #8A6A4A;
+  --color-text-muted:     #C4A882;
+  --color-border:         #4A2E18;
+  --color-bg:             #1A0F08;
+  --color-bg-secondary:   #221408;
+  --color-bg-tertiary:    #2E1A0A;
+  --color-primary:        #E05C36;
+  --primary-100:          rgba(224, 92, 54, 0.15);
+  --shadow-sm:            0 1px 3px rgba(0,0,0,0.35);
+  --shadow-md:            0 4px 12px rgba(0,0,0,0.40);
+  --shadow-lg:            0 12px 32px rgba(0,0,0,0.45);
+}
+
+@media (min-width: 768px) {
+  .hero-section {
+    padding-bottom: 2rem;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   HERO — estilos Tarea 3 (formas orgánicas SVG + imagen + badge)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Formas orgánicas SVG de fondo — parallax targets ──────────────────── */
+.hero-shapes {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-shape {
+  position: absolute;
+  border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.hero-shape--1 {
+  /* Grande, esquina superior derecha — ámbar cálido */
+  width: clamp(300px, 50vw, 700px);
+  height: clamp(300px, 50vw, 700px);
+  top: -10%;
+  right: -8%;
+  background: radial-gradient(
+    ellipse at 40% 40%,
+    rgba(232, 148, 58, 0.18) 0%,
+    rgba(249, 232, 227, 0.12) 55%,
+    transparent 80%
+  );
+  filter: blur(60px);
+}
+
+.hero-shape--2 {
+  /* Mediana, zona central-baja — terracota */
+  width: clamp(200px, 35vw, 520px);
+  height: clamp(200px, 35vw, 520px);
+  bottom: 5%;
+  right: 20%;
+  background: radial-gradient(
+    ellipse at 55% 55%,
+    rgba(196, 75, 43, 0.12) 0%,
+    rgba(238, 224, 204, 0.08) 60%,
+    transparent 85%
+  );
+  filter: blur(50px);
+}
+
+.hero-shape--3 {
+  /* Pequeña, zona izquierda baja — salvia */
+  width: clamp(150px, 25vw, 380px);
+  height: clamp(150px, 25vw, 380px);
+  top: 50%;
+  left: 2%;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(107, 143, 113, 0.11) 0%,
+    transparent 75%
+  );
+  filter: blur(40px);
+}
+
+/* ── Eyebrow del hero ─────────────────────────────────────────────────── */
+.hero-eyebrow {
+  margin-bottom: -0.5rem; /* compensa gap del flex con el heading */
+}
+
+/* ── Heading lines — contenedor overflow:hidden por línea ─────────────── */
+/* El span .hero-heading__wrap aplica overflow:hidden             */
+/* El span .hero-heading__line anima translateY dentro del wrap   */
+.hero-heading__wrap {
+  display: block;
+  overflow: hidden;
+  /* No margin: el h1 maneja line-height */
+}
+
+.hero-heading__line {
+  display: block;
+  will-change: transform, opacity;
+}
+
+/* Línea de acento — terracota (palabra "cuidada.") */
+.hero-heading__line--accent {
+  color: var(--color-primary);
+}
+
+/* ── Subcopy ─────────────────────────────────────────────────────────── */
+.hero-subcopy {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  margin: 0;
+  max-width: 52ch;
+  will-change: opacity, transform;
+}
+
+/* ── CTAs inline — pointer-events SIEMPRE activos ────────────────────── */
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  pointer-events: auto !important; /* anti-pattern block: nunca desactivar */
+  will-change: opacity, transform;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.625rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 52px; /* tap target ≥44px */
+  transition:
+    transform var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.hero-btn:active {
+  transform: scale(0.97);
+}
+
+/* Llamar — hardcoded: scope hero redefine --color-primary a #E05C36 (3.64:1 FAIL AA) */
+.hero-btn--primary {
+  background-color: #C44B2B; /* #C44B2B + blanco = 4.87:1 AA ✅ */
+  color: #FFFFFF;
+  box-shadow: var(--shadow-md);
+}
+
+@media (hover: hover) {
+  .hero-btn--primary:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-accent);
+  }
+}
+
+/* WhatsApp — verde #25D366, texto oscuro #2C1A0E 6.20:1 ✅ — NUNCA blanco */
+.hero-btn--whatsapp {
+  background-color: var(--color-whatsapp);
+  color: #2C1A0E;
+  box-shadow: var(--shadow-md);
+}
+
+@media (hover: hover) {
+  .hero-btn--whatsapp:hover {
+    background-color: var(--color-whatsapp-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-whatsapp);
+  }
+}
+
+/* ── Trust line ──────────────────────────────────────────────────────── */
+/* Dentro del scope .hero-section: --color-text-muted = #C4A882.
+   #C4A882 sobre fondo chocolate #1A0F08 = 7.5:1 ✅ AAA.
+   (sin este override, hereda color: #FDF8F3 — excesivo para texto pequeño) */
+.hero-trust {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  max-width: none;
+  line-height: 1.5;
+  will-change: opacity;
+}
+
+/* ── Columna imagen (derecha, 45%) ────────────────────────────────────── */
+.hero-image-col {
+  position: relative;
+  will-change: transform, opacity;
+}
+
+/* ── Wrapper imagen — desborda el grid en desktop ─────────────────────── */
+.hero-image-wrapper {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  /* Sombra cálida elevación 3 */
+  box-shadow: var(--shadow-lg);
+  /* Relación de aspecto 4:5 — vertical, portrait */
+  aspect-ratio: 4 / 5;
+  background-color: var(--color-bg-tertiary); /* fallback mientras carga */
+}
+
+@media (min-width: 1024px) {
+  .hero-image-wrapper {
+    /* En desktop desborda ligeramente el grid hacia arriba */
+    margin-top: -3rem;
+    margin-bottom: -3rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-image-wrapper {
+    /* En pantallas grandes desborda más — broken grid visual-direction */
+    margin-top: -5rem;
+    margin-bottom: -5rem;
+    margin-right: calc(-1 * var(--envelope-px));
+  }
+}
+
+/* Imagen hero */
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* Overlay gradiente cálido sobre imagen */
+.hero-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(253, 248, 243, 0.05) 0%,
+    rgba(44, 26, 14, 0.15) 100%
+  );
+  pointer-events: none;
+}
+
+/* ── Badge urgencias flotante ─────────────────────────────────────────── */
+.hero-badge {
+  position: absolute;
+  bottom: 1.5rem;
+  left: -1rem;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  background-color: #FFFFFF;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 0.75rem 1rem;
+  box-shadow: var(--shadow-lg);
+  will-change: transform, opacity;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+@media (max-width: 1023px) {
+  /* Mobile/tablet: badge debajo de la imagen, no flotante sobre ella */
+  .hero-badge {
+    position: static;
+    left: auto;
+    bottom: auto;
+    align-self: flex-start;
+    margin-top: 0.75rem;
+  }
+}
+
+/* Punto de pulso animado */
+@keyframes badge-pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(1.5); }
+}
+
+.hero-badge__pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-badge__pulse-dot {
+    animation: badge-pulse-dot 2s ease-in-out infinite;
+  }
+}
+
+.hero-badge__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.hero-badge__title {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.875rem;
+  /* Hardcoded dark — badge bg es siempre #FFF, tokens de tema rompen contraste
+     #1A0A04 sobre #FFF = 21:1 ✅ (funciona en dark y light mode) */
+  color: #1A0A04;
+  line-height: 1.2;
+}
+
+.hero-badge__sub {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  /* #5C3818 sobre #FFF = 6.8:1 ✅ AA — #A07050 dark-mode solo da 2.9:1 ❌ */
+  color: #5C3818;
+  line-height: 1.3;
+}
+
+/* ── Fade de transición inferior ──────────────────────────────────────── */
+/* Desde chocolate oscuro (#1A0F08) hacia crema (#FDF8F3) — transición     */
+/* entre el hero oscuro y la sección Services que arranca en crema claro.  */
+.hero-fade-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8rem;
+  background: linear-gradient(to bottom, transparent 0%, #FDF8F3 100%);
+  pointer-events: none;
+  z-index: 2; /* por encima de las formas/blobs pero debajo del contenido */
+}
+
+/* ── Grid hero — 1 col mobile → 2 col asimétrico desktop ─────────────── */
+/*    RESTAURADO fix-hero-regression-2 (2026-06-11): bloque fue borrado        */
+.hero-grid {
+  /* Mobile-first: columna única */
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  /* Clearance de la nav fija (4.5rem) + holgura extra */
+  padding-block-start: 7rem;
+  /* Padding inferior para que el fade-bottom no solape el contenido */
+  padding-block-end: 3rem;
+  /* Asegurar que el contenido de texto quede sobre la imagen (z-index) */
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 1024px) {
+  .hero-grid {
+    display: grid;
+    /* Texto ~45% / Imagen ~55% — coherente con checkpoint aprobado */
+    grid-template-columns: 45fr 55fr;
+    align-items: center;
+    gap: 3rem;
+    /* Altura mínima que aprovecha el 100svh del hero-section */
+    min-height: 100svh;
+    padding-block-start: 6rem;
+    padding-block-end: 4rem;
+  }
+}
+
+/* ── Layout mobile del hero-text-col ──────────────────────────────────── */
+.hero-text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   SERVICES SECTION
+   Layout: 1 col mobile → 2 col tablet → 3 col desktop
+   Contexto: arranca el cuerpo claro (--color-bg) después del hero oscuro
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.services-section {
+  background-color: var(--color-bg);
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Section header ──────────────────────────────────────────────────────── */
+.services-header {
+  text-align: center;
+  margin-bottom: clamp(2.5rem, 4vw, 4rem);
+}
+
+.services-eyebrow {
+  margin-bottom: 0.75rem;
+}
+
+.services-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-text-emphasis);
+  text-wrap: balance;
+  margin: 0;
+}
+
+/* ── Grid responsive ─────────────────────────────────────────────────────── */
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* ── Card base ───────────────────────────────────────────────────────────── */
+.service-card {
+  position: relative;
+  background-color: var(--color-bg-tertiary);   /* #EEE0CC crema oscuro */
+  border: 1.5px solid #D4B896;
+  border-radius: var(--radius-lg);               /* 16px */
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  /* Elevación 2 (rest) */
+  box-shadow: var(--shadow-md);
+  /* Perspectiva para 3D tilt */
+  transform-style: preserve-3d;
+  /* Transición suave del shadow en hover — la transform la controla GSAP */
+  transition: box-shadow 0.25s ease;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ── Ícono ───────────────────────────────────────────────────────────────── */
+.service-card__icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-secondary);   /* crema más suave */
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+/* ── Título ──────────────────────────────────────────────────────────────── */
+.service-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.125rem, 1.5vw, 1.375rem);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-text-emphasis);
+  margin: 0;
+}
+
+/* ── Descripción ─────────────────────────────────────────────────────────── */
+.service-card__desc {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0;
+  flex: 1;  /* empuja el CTA al fondo si la card es más alta */
+}
+
+/* ══ Variante URGENCIAS ══════════════════════════════════════════════════════
+   bg: terracota primario | texto: blanco | mini-CTA propio
+   ══════════════════════════════════════════════════════════════════════════ */
+.service-card--emergency {
+  background-color: var(--color-primary);  /* #C44B2B terracota */
+  border-color: var(--color-primary-dark); /* #A33820 */
+  /* Override shadow con acento terracota */
+  box-shadow: var(--shadow-accent, 0 8px 24px rgba(196, 75, 43, 0.35));
+}
+
+/* Glow pulsante de fondo (solo no-preference) */
+.service-card__emergency-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .service-card__emergency-glow {
+    animation: emergency-card-glow 3s ease-in-out infinite;
+  }
+
+  @keyframes emergency-card-glow {
+    0%, 100% { opacity: 0; }
+    50%       { opacity: 0.12; background: radial-gradient(ellipse at 50% 0%, #FFFFFF, transparent 70%); }
+  }
+}
+
+.service-card__icon-wrap--emergency {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+}
+
+.service-card__title--emergency {
+  color: #FFFFFF;
+  font-size: clamp(1.25rem, 1.75vw, 1.5rem);
+}
+
+.service-card__desc--emergency {
+  /* Blanco al 85% — contraste ✅ sobre terracota */
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* ── Mini-CTA row ────────────────────────────────────────────────────────── */
+.service-card__cta-row {
+  display: flex;
+  gap: 0.625rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.service-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 0.875rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-decoration: none;
+  line-height: 1;
+  transition: background-color 0.18s ease, transform 0.18s ease;
+  /* Tap target mínimo 44px */
+  min-height: 44px;
+  /* Nunca bloquear el click — anti-pattern crítico */
+  pointer-events: auto;
+}
+
+.service-card__cta--phone {
+  background-color: rgba(255, 255, 255, 0.22);
+  color: #FFFFFF;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+}
+
+.service-card__cta--phone:hover,
+.service-card__cta--phone:focus-visible {
+  background-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+/* WhatsApp en card urgencias: texto oscuro sobre verde — contraste 6.20:1 ✅ */
+.service-card__cta--whatsapp {
+  background-color: #25D366;
+  color: #2C1A0E;   /* OBLIGATORIO — nunca blanco */
+  border: 1.5px solid transparent;
+}
+
+.service-card__cta--whatsapp:hover,
+.service-card__cta--whatsapp:focus-visible {
+  background-color: #1DA851;
+  transform: translateY(-1px);
+}
+
+/* Focus visible universal */
+.service-card__cta:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 2px;
+}
+
+/* ── Nota de placeholder (dev-only, small) ───────────────────────────────── */
+.services-placeholder-note {
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  color: var(--color-text-tertiary);
+  font-family: var(--font-body);
+  text-align: center;
+  font-style: italic;
+}
+
+.services-placeholder-note code {
+  font-family: var(--font-mono, monospace);
+  background-color: var(--color-bg-tertiary);
+  padding: 0.1em 0.3em;
+  border-radius: 4px;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ABOUT SECTION — "Sobre Luciano"
+   Layout: asimétrico 45/55 · imagen rotada −2deg · fade-up reveals
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.about-section {
+  background-color: var(--color-bg-secondary);  /* #F7EDE0 — crema cálida */
+  position: relative;
+}
+
+/* ── Grid 45/55 asimétrico ──────────────────────────────────────────────── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .about-grid {
+    grid-template-columns: 45fr 55fr;
+    gap: clamp(3rem, 6vw, 6rem);
+  }
+}
+
+/* ── Columna imagen ─────────────────────────────────────────────────────── */
+.about-image-col {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.about-image-wrapper {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  max-width: 400px;
+  /* Rotación editorial — design_variance 7 */
+  transform: rotate(-2deg);
+  box-shadow: var(--shadow-lg);
+  background-color: var(--color-bg-tertiary);  /* fallback mientras carga */
+}
+
+@media (min-width: 900px) {
+  .about-image-wrapper {
+    max-width: 100%;
+    transform: rotate(-2deg);
+  }
+}
+
+.about-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* Overlay cálido tenue sobre imagen */
+.about-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 55%,
+    rgba(44, 26, 14, 0.18) 100%
+  );
+  pointer-events: none;
+}
+
+/* ── Badge flotante ─────────────────────────────────────────────────────── */
+.about-float-badge {
+  position: absolute;
+  bottom: 1.5rem;
+  right: -0.5rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  background-color: #FFFFFF;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 0.75rem 1rem;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  /* Contrarresta la rotación de la imagen para que quede recto */
+  transform: rotate(2deg);
+}
+
+@media (max-width: 899px) {
+  .about-float-badge {
+    right: 0.5rem;
+    bottom: 1rem;
+  }
+}
+
+.about-float-badge__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-secondary);  /* ámbar */
+  flex-shrink: 0;
+}
+
+.about-float-badge__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.about-float-badge__title {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.875rem;
+  /* Hardcoded dark — badge bg es #FFF, tokens no deben invertirse */
+  color: #1A0A04;
+  line-height: 1.2;
+}
+
+.about-float-badge__sub {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: #5C3818;
+  line-height: 1.3;
+}
+
+/* ── Columna texto ──────────────────────────────────────────────────────── */
+.about-text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.about-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-text-emphasis);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.about-bio {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin: 0;
+  max-width: 60ch;
+}
+
+/* Nota de placeholder inline */
+/* FIX QA CONTRASTE: opacity 0.75 * #A07050 → effective ~#b68f74 = 1.99:1 ❌
+   #5C3A1E sin opacity en #F7EDE0 = 4.73:1 ✅ — sigue pareciendo "secundario" */
+.about-placeholder-note {
+  font-size: 0.8125rem;
+  font-style: italic;
+  color: #5C3A1E;
+  opacity: 1;
+}
+
+/* ── Lista de trust points ──────────────────────────────────────────────── */
+.about-trust-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.about-trust-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.about-trust-item__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: var(--primary-100);
+  color: var(--color-primary);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── CTAs ───────────────────────────────────────────────────────────────── */
+.about-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.about-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.375rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  min-height: 48px;
+  transition:
+    transform var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.about-btn:active {
+  transform: scale(0.97);
+}
+
+.about-btn--whatsapp {
+  background-color: var(--color-whatsapp);
+  color: #2C1A0E;  /* CRÍTICO: nunca blanco sobre #25D366 */
+  box-shadow: var(--shadow-md);
+}
+
+@media (hover: hover) {
+  .about-btn--whatsapp:hover {
+    background-color: var(--color-whatsapp-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-whatsapp);
+  }
+}
+
+/* FIX QA CONTRASTE: #C44B2B sobre #F7EDE0 = 2.08:1 ❌
+   #611E0E sobre #F7EDE0 = 4.73:1 ✅  sobre #F9E8E3 (hover) = 4.76:1 ✅ */
+.about-btn--secondary {
+  background-color: transparent;
+  color: var(--primary-800);         /* #611E0E — era --color-primary #C44B2B */
+  border: 1.5px solid var(--primary-800);
+  box-shadow: none;
+}
+
+@media (hover: hover) {
+  .about-btn--secondary:hover {
+    background-color: var(--primary-100);
+    border-color: var(--primary-800);
+    transform: translateY(-2px);
+  }
+}
+
+/* ── Nota de dev ────────────────────────────────────────────────────────── */
+/* FIX QA CONTRASTE: opacity 0.7 * #A07050 → effective ~#a07050 = 3.68:1 ❌
+   #5C3A1E sin opacity en #F7EDE0 = 4.73:1 ✅ */
+.about-dev-note {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: #5C3A1E;
+  margin: 0;
+  max-width: none;
+  opacity: 1;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   LOCATION + HOURS SECTION — Ubicación y Horarios
+   Layout: encabezado centrado + grid info(columna izq) | mapa (columna der)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.location-section {
+  background-color: var(--color-bg);   /* crema base #FDF8F3 */
+  position: relative;
+}
+
+/* ── Encabezado centrado ─────────────────────────────────────────────────── */
+.location-header {
+  text-align: center;
+  margin-bottom: clamp(2.5rem, 4vw, 4rem);
+}
+
+.location-eyebrow {
+  margin-bottom: 0.75rem;
+}
+
+.location-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-text-emphasis);
+  margin: 0 0 0.875rem;
+  text-wrap: balance;
+}
+
+.location-subhead {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  margin: 0 auto;
+  max-width: 55ch;
+}
+
+/* ── Grid info + mapa ─────────────────────────────────────────────────────── */
+.location-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .location-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: stretch;
+  }
+}
+
+/* ── Columna info ─────────────────────────────────────────────────────────── */
+.location-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  /* FIX QA: CSS Grid min-content sizing expande 1fr a 430px en mobile sin este guard */
+  min-width: 0;
+}
+
+/* ── Cards de info (dirección / horarios) ──────────────────────────────────── */
+.location-card {
+  display: flex;
+  gap: 1rem;
+  background-color: var(--color-bg-secondary);  /* #F7EDE0 */
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.375rem 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.location-card__icon-wrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background-color: var(--primary-100);
+  color: var(--color-primary);
+  flex-shrink: 0;
+  padding-top: 11px;
+}
+
+.location-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.location-card__title {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-text-emphasis);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.location-card__text {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1.5;
+  max-width: none;
+}
+
+/* FIX QA CONTRASTE: opacity 0.8 * #A07050 → effective ~#b1896d = 2.72:1 ❌
+   #5C3A1E sin opacity en #F7EDE0 (card bg) = 4.73:1 ✅ */
+.location-card__note {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: #5C3A1E;
+  margin: 0;
+  max-width: none;
+  opacity: 1;
+}
+
+/* ── Tabla de horarios ──────────────────────────────────────────────────── */
+.location-hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+}
+
+.location-hours-row {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.location-hours-row:last-child {
+  border-bottom: none;
+}
+
+.location-hours-row--emergency {
+  background-color: var(--primary-100);
+}
+
+/* FIX QA CONTRASTE: --color-primary #C44B2B sobre #F9E8E3 = 4.02:1 ❌ (necesita 4.5)
+   --primary-800 #611E0E sobre #F9E8E3 = 4.76:1 ✅
+   font-weight: 600 a 0.875rem (14px) = no califica como "large text" WCAG → necesita 4.5:1 */
+.location-hours-row--emergency .location-hours-days,
+.location-hours-row--emergency .location-hours-time {
+  color: var(--primary-800); /* #611E0E */
+  font-weight: 600;
+}
+
+.location-hours-days,
+.location-hours-time,
+.location-hours-note {
+  padding: 0.5rem 0.25rem;
+  vertical-align: top;
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+.location-hours-days {
+  padding-right: 1rem;
+  white-space: nowrap;
+}
+
+.location-hours-time {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  padding-right: 0.75rem;
+}
+
+/* FIX QA CONTRASTE: #A07050 en #F7EDE0 (card bg) = 2.55:1 ❌
+   #5C3A1E en #F7EDE0 = 4.73:1 ✅ */
+.location-hours-note {
+  font-size: 0.75rem;
+  color: #5C3A1E;
+}
+
+/* ── CTAs ubicación ─────────────────────────────────────────────────────── */
+.location-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+}
+
+.location-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.625rem 1.125rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  min-height: 44px;
+  transition:
+    transform var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.location-btn:active {
+  transform: scale(0.97);
+}
+
+.location-btn--directions {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  box-shadow: var(--shadow-md);
+}
+
+@media (hover: hover) {
+  .location-btn--directions:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+  }
+}
+
+/* WhatsApp: texto oscuro sobre verde — contraste 6.20:1 ✅ */
+.location-btn--whatsapp {
+  background-color: var(--color-whatsapp);
+  color: #2C1A0E;  /* OBLIGATORIO — nunca blanco */
+  box-shadow: var(--shadow-md);
+}
+
+@media (hover: hover) {
+  .location-btn--whatsapp:hover {
+    background-color: var(--color-whatsapp-dark);
+    transform: translateY(-2px);
+  }
+}
+
+.location-btn--phone {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-border);
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (hover: hover) {
+  .location-btn--phone:hover {
+    border-color: var(--color-primary);
+    background-color: var(--primary-100);
+    transform: translateY(-2px);
+  }
+}
+
+/* ── Columna mapa ─────────────────────────────────────────────────────────── */
+.location-map-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-self: stretch;
+  /* FIX QA: mismo guard que location-info-col para que ambas columnas respeten 1fr */
+  min-width: 0;
+}
+
+.location-map-wrapper {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1.5px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  /* Mínimo para que sea útil en mobile */
+  min-height: 300px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 900px) {
+  .location-map-wrapper {
+    min-height: 420px;
+  }
+}
+
+/* Nota de ubicación aproximada sobre el mapa */
+.location-map-note {
+  background-color: var(--color-bg-accent-warm);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.625rem 1rem;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  margin: 0;
+  max-width: none;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+
+.location-map-iframe {
+  flex: 1;
+  width: 100%;
+  min-height: 280px;
+  border: none;
+  display: block;
+}
+
+/* ── prefers-reduced-motion — guard global OBLIGATORIO ──────────────────── */
+/* (motion_intensity 9 con >5 animaciones GSAP — WCAG 2.1 AA, 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration:       0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration:      0.01ms !important;
+    scroll-behavior:          auto !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   NAV — Navbar superior fija
+   Estado top: transparente · Estado scrolled: crema blur
+   Mobile: hamburger + drawer overlay (z-overlay 1020)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-sticky); /* 1010 */
+  /* Estado top: transparente */
+  background-color: transparent;
+  transition:
+    background-color var(--duration-normal) var(--ease-in-out),
+    backdrop-filter var(--duration-normal) var(--ease-in-out),
+    box-shadow var(--duration-normal) var(--ease-in-out);
+}
+
+/* Estado top: el nav flota sobre el hero OSCURO — texto crema para legibilidad */
+/* .nav-bar sin .nav-bar--scrolled = posición top, hero chocolate de fondo     */
+.nav-bar:not(.nav-bar--scrolled) .nav-wordmark__main,
+.nav-bar:not(.nav-bar--scrolled) .nav-link,
+.nav-bar:not(.nav-bar--scrolled) .nav-hamburger {
+  color: #FDF8F3; /* crema — legible sobre #1A0F08 */
+}
+
+.nav-bar:not(.nav-bar--scrolled) .nav-link::after {
+  background-color: #E05C36; /* terracota versión hero oscuro */
+}
+
+@media (hover: hover) {
+  .nav-bar:not(.nav-bar--scrolled) .nav-link:hover {
+    color: #E05C36;
+  }
+}
+
+/* Estado scrolled (JS agrega la clase) */
+/* Una vez scrolleado, el fondo crema aparece → texto vuelve a oscuro (#2C1A0E) */
+.nav-bar--scrolled {
+  background-color: rgba(253, 248, 243, 0.92);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Inner: flex row con envelope */
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.5rem; /* 72px — scroll-padding-top debe coincidir */
+  gap: 1rem;
+}
+
+/* ── Wordmark tipográfico — Playfair Display ────────────────────────────── */
+.nav-wordmark {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  min-height: 44px; /* fix-3: touch target WCAG 2.5.5 ≥44px */
+  text-decoration: none;
+  flex-shrink: 0;
+  /* Focus cálido */
+  border-radius: var(--radius-sm);
+}
+
+.nav-wordmark__main {
+  font-family: var(--font-display);
+  font-size: clamp(1.0625rem, 0.95rem + 0.4vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--color-text-emphasis);
+  /* Transición suave al hacer scroll */
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+/* ── Links desktop ─────────────────────────────────────────────────────── */
+.nav-links {
+  display: none; /* oculto en mobile */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 0.25rem;
+}
+
+@media (min-width: 769px) {
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+}
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: color var(--duration-fast) var(--ease-out);
+  white-space: nowrap;
+}
+
+/* Underline-draw ::after — behavioral rule del design-system */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0.75rem;
+  right: 0.75rem;
+  height: 1.5px;
+  background-color: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--duration-fast) var(--ease-out);
+  border-radius: 1px;
+}
+
+@media (hover: hover) {
+  .nav-link:hover {
+    color: var(--color-primary);
+  }
+
+  .nav-link:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+/* ── Hamburger button (mobile ≤768px) ──────────────────────────────────── */
+/* Tap target: 44x44px obligatorio — regla universal */
+.nav-hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Tap target mínimo 44x44px */
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: var(--radius-base);
+  cursor: pointer;
+  color: var(--color-text-emphasis);
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+  /* Solo visible en mobile */
+}
+
+@media (min-width: 769px) {
+  .nav-hamburger {
+    display: none;
+  }
+}
+
+@media (hover: hover) {
+  .nav-hamburger:hover {
+    background-color: var(--primary-100);
+    color: var(--color-primary);
+  }
+}
+
+.nav-hamburger:active {
+  background-color: var(--primary-200);
+}
+
+/* ── Backdrop (mobile) — oscurece el contenido detrás del drawer ───────── */
+.nav-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1019; /* justo debajo del drawer */
+  background-color: rgba(44, 26, 14, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-normal) var(--ease-in-out);
+}
+
+.nav-backdrop--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── Drawer mobile ─────────────────────────────────────────────────────── */
+/*
+   Posición: right slide-in, 80vw max 320px
+   z-index: 1020 (--z-overlay) — DEBAJO de z-emergency (1040)
+   El EmergencyCTA sticky (fixed bottom, z-1040) queda encima → convivencia OK
+   Mobile: transform translateX(100%) → translateX(0) al abrir
+*/
+.nav-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(80vw, 320px);
+  z-index: var(--z-overlay); /* 1020 */
+  background-color: var(--color-bg); /* crema #FDF8F3 */
+  border-left: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 1.5rem 1.5rem; /* top padding = nav height + espacio */
+  gap: 0;
+  overflow-y: auto;
+  /* Estado cerrado */
+  transform: translateX(100%);
+  visibility: hidden;
+  transition:
+    transform var(--duration-normal) var(--ease-primary),
+    visibility 0ms var(--duration-normal);
+  /* Box shadow cálida izquierda */
+  box-shadow: -8px 0 32px rgba(44, 26, 14, 0.12);
+}
+
+/* Solo relevante en mobile */
+@media (min-width: 769px) {
+  .nav-drawer {
+    display: none;
+  }
+}
+
+.nav-drawer--open {
+  transform: translateX(0);
+  visibility: visible;
+  transition:
+    transform var(--duration-normal) var(--ease-primary),
+    visibility 0ms 0ms;
+}
+
+/* Lista de ítems del drawer */
+.nav-drawer__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.nav-drawer__item {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+/* Stagger fade-up al abrir — behavioral rule design-system */
+@media (prefers-reduced-motion: no-preference) {
+  .nav-drawer--open .nav-drawer__item {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity var(--duration-normal) var(--ease-out),
+      transform var(--duration-normal) var(--ease-out);
+    /* Delay escalonado via CSS custom property --item-index */
+    transition-delay: calc(var(--item-index, 0) * 60ms + 80ms);
+  }
+}
+
+/* Mostrar inmediatamente bajo reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .nav-drawer__item {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.nav-drawer__link {
+  display: block;
+  padding: 0.875rem 1rem;
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: var(--radius-base);
+  /* Tap target ≥44px — altura del padding garantiza >44px */
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  transition: background-color var(--duration-fast) var(--ease-out),
+              color var(--duration-fast) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (hover: hover) {
+  .nav-drawer__link:hover {
+    background-color: var(--primary-100);
+    color: var(--color-primary);
+  }
+}
+
+.nav-drawer__link:active {
+  background-color: var(--primary-200);
+}
+
+/* ── CTA de urgencias dentro del drawer ────────────────────────────────── */
+.nav-drawer__cta-block {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+  /* Padding bottom extra para no solapar con EmergencyCTA sticky */
+  padding-bottom: 5rem;
+}
+
+.nav-drawer__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  min-height: 52px;
+  transition: background-color var(--duration-fast) var(--ease-out),
+              transform var(--duration-fast) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-drawer__cta--call {
+  background-color: var(--color-primary);
+  color: #FFFFFF; /* contraste 4.87:1 ✅ */
+  box-shadow: var(--shadow-accent);
+}
+
+.nav-drawer__cta--call:active {
+  transform: scale(0.97);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   FOOTER SECTION
+   Fondo: #F7EDE0 (crema cálida — design-system spec §11)
+   Grid 3 col desktop: Brand | Contacto+Urgencias | Horarios
+   id="contacto" → target del anchor nav
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.footer-section {
+  background-color: var(--color-bg-secondary); /* #F7EDE0 — spec design-system */
+  border-top: 1px solid var(--color-border);
+  position: relative;
+  /* Padding bottom extra en mobile para que el EmergencyCTA sticky no tape el copyright */
+  padding-bottom: 5.5rem;
+}
+
+@media (min-width: 768px) {
+  .footer-section {
+    padding-bottom: 0;
+  }
+}
+
+/* ── Grid principal ────────────────────────────────────────────────────── */
+.footer-main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 4vw, 3rem);
+  padding-top: clamp(3rem, 5vw, 5rem);
+  padding-bottom: clamp(2.5rem, 4vw, 4rem);
+}
+
+@media (min-width: 640px) {
+  .footer-main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-main {
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+}
+
+/* ── Columna base ─────────────────────────────────────────────────────── */
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Brand ocupa el ancho completo en columnas 2 (md) antes de 3-col */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .footer-col--brand {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ── Wordmark ─────────────────────────────────────────────────────────── */
+.footer-wordmark {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.footer-wordmark__main {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.8vw, 1.625rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text-emphasis);
+  line-height: 1.1;
+}
+
+.footer-wordmark__sub {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: #5C3A1E; /* fix-1: #A07050 → #5C3A1E (WCAG AA 4.73:1 sobre #f7ede0) */
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* ── Tagline ──────────────────────────────────────────────────────────── */
+.footer-tagline {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 40ch;
+}
+
+/* ── Dirección ────────────────────────────────────────────────────────── */
+.footer-address {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  font-style: normal; /* override <address> default */
+  line-height: 1.5;
+  max-width: none;
+}
+
+.footer-address svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--color-primary);
+}
+
+/* ── Redes sociales ───────────────────────────────────────────────────── */
+.footer-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  /* Tap target ≥44px — WCAG 2.5.5 */
+  min-height: 44px;
+  padding-block: 0.25rem;
+  transition: color var(--duration-fast) var(--ease-out);
+  border-radius: var(--radius-sm);
+}
+
+@media (hover: hover) {
+  .footer-social-link:hover {
+    color: var(--color-primary);
+  }
+}
+
+.footer-social-handle {
+  font-weight: 500;
+}
+
+/* ── Heading de columna ───────────────────────────────────────────────── */
+.footer-col__heading {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #611E0E; /* fix-2: #C44B2B → #611E0E (WCAG AA 4.73:1 sobre #f7ede0) */
+  margin: 0 0 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+/* Override h3 defaults (heredaría Playfair) */
+.footer-col h3.footer-col__heading {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #611E0E; /* fix-2: #C44B2B → #611E0E (WCAG AA 4.73:1 sobre #f7ede0) */
+  letter-spacing: 0.1em;
+}
+
+/* ── Filas de contacto (tel / wa) ────────────────────────────────────── */
+.footer-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  text-decoration: none;
+  padding: 0.375rem 0;
+  min-height: 44px; /* fix-4: 36px → 44px (WCAG 2.5.5 touch target) */
+  border-radius: var(--radius-sm);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .footer-contact-row:hover {
+    color: var(--color-primary);
+  }
+}
+
+.footer-contact-row svg {
+  flex-shrink: 0;
+  color: var(--color-text-tertiary);
+}
+
+.footer-contact-row--whatsapp:hover svg {
+  color: var(--color-whatsapp-dark);
+}
+
+/* ── Bloque urgencias destacado ──────────────────────────────────────── */
+.footer-emergency-block {
+  margin-top: 0.75rem;
+  background-color: var(--primary-100); /* #F9E8E3 tint terracota */
+  border: 1.5px solid var(--primary-200);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-emergency-block__heading {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1rem;
+  color: #611E0E; /* fix-2: #C44B2B → #611E0E (WCAG AA 4.76:1 sobre #f9e8e3) */
+  margin: 0;
+  max-width: none;
+  line-height: 1.2;
+}
+
+.footer-emergency-block__sub {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+  max-width: none;
+  line-height: 1.5;
+}
+
+.footer-emergency-block__ctas {
+  display: flex;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+/* Botones urgencias footer */
+.footer-emergency-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.625rem 1rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  /* Tap target ≥44px */
+  min-height: 44px;
+  transition:
+    transform var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.footer-emergency-btn:active {
+  transform: scale(0.97);
+}
+
+/* Llamar — terracota, texto blanco 4.87:1 ✅ */
+.footer-emergency-btn--call {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  box-shadow: var(--shadow-md);
+}
+
+@media (hover: hover) {
+  .footer-emergency-btn--call:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-accent);
+  }
+}
+
+/* WhatsApp — verde, texto oscuro 6.20:1 ✅ — NUNCA texto blanco */
+.footer-emergency-btn--whatsapp {
+  background-color: var(--color-whatsapp);
+  color: #2C1A0E; /* CRÍTICO: nunca blanco sobre #25D366 */
+  box-shadow: var(--shadow-md);
+}
+
+@media (hover: hover) {
+  .footer-emergency-btn--whatsapp:hover {
+    background-color: var(--color-whatsapp-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-whatsapp);
+  }
+}
+
+/* ── Horarios en footer ───────────────────────────────────────────────── */
+.footer-hours-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.footer-hours-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(212, 184, 150, 0.4);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+}
+
+.footer-hours-row:last-child {
+  border-bottom: none;
+}
+
+.footer-hours-row--emergency {
+  background-color: transparent;
+}
+
+.footer-hours-row--emergency .footer-hours-days,
+.footer-hours-row--emergency .footer-hours-time {
+  color: #611E0E; /* fix-2: #C44B2B → #611E0E (WCAG AA 4.73:1 sobre #f7ede0) */
+  font-weight: 600;
+}
+
+.footer-hours-days {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.footer-hours-time {
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.4;
+}
+
+.footer-hours-note {
+  font-size: 0.75rem;
+  color: #5C3A1E; /* fix-1: #A07050 → #5C3A1E (WCAG AA 4.73:1 sobre #f7ede0) */
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* ── Divisor ──────────────────────────────────────────────────────────── */
+.footer-divider {
+  height: 1px;
+  background-color: var(--color-border);
+  opacity: 0.5;
+}
+
+/* ── Bottom bar ───────────────────────────────────────────────────────── */
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .footer-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+.footer-copy {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: #5C3A1E; /* fix-1: #A07050 → #5C3A1E (WCAG AA 4.73:1 sobre #f7ede0) */
+  margin: 0;
+  max-width: none;
+  line-height: 1.5;
+}
+
+.footer-copy--disclaimer {
+  font-style: italic;
+  /* fix-1: opacity:0.7 removida — reducía #5C3A1E a ~#BA967B (2.35:1 FAIL); hereda #5C3A1E del padre */
+}
