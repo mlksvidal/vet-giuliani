@@ -97,7 +97,6 @@ export function About() {
   const bioRef = useRef<HTMLParagraphElement>(null)
   const tagsRef = useRef<HTMLUListElement>(null)
   const ctasRef = useRef<HTMLDivElement>(null)
-  const placeholderNoteRef = useRef<HTMLParagraphElement>(null)
 
   const telUrl = getTelUrl()
   const waUrl = getWhatsAppUrgencyUrl()
@@ -112,7 +111,6 @@ export function About() {
       bioRef.current,
       tagsRef.current,
       ctasRef.current,
-      placeholderNoteRef.current,
     ].filter(Boolean) as HTMLElement[]
 
     if (prefersReduced) {
@@ -208,7 +206,7 @@ export function About() {
               {/* Foto placeholder — confirmar con cliente */}
               <img
                 src="/assets/about.webp"
-                alt="Luciano Giuliani, médico veterinario, en su consultorio de San Rafael atendiendo con dedicación — foto a confirmar con el cliente"
+                alt="Luciano Giuliani, médico veterinario, en su consultorio de San Rafael"
                 className="about-image"
                 loading="lazy"
                 width={600}
@@ -259,13 +257,6 @@ export function About() {
               style={{ opacity: 0 }}
             >
               {site.copy.about}
-              {' '}
-              <span
-                className="about-placeholder-note"
-                aria-label="Nota de desarrollo: confirmar bio con el cliente"
-              >
-                (bio a confirmar con el cliente*)
-              </span>
             </p>
 
             {/* Trust points */}
@@ -303,23 +294,13 @@ export function About() {
               <a
                 href={telUrl}
                 className="about-btn about-btn--secondary"
-                aria-label={`Llamar a ${site.phone.display}`}
+                aria-label="Llamar a la veterinaria"
               >
                 <PhoneIcon size={16} />
                 {site.phone.display}
               </a>
             </div>
 
-            {/* Nota de placeholder para dev */}
-            <p
-              ref={placeholderNoteRef}
-              className="about-dev-note"
-              role="note"
-              aria-label="Nota de desarrollo"
-              style={{ opacity: 0 }}
-            >
-              * Foto y bio: confirmar con el cliente antes de publicar.
-            </p>
 
           </div>
         </div>

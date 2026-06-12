@@ -164,7 +164,7 @@ export function Footer() {
           {/* Dirección */}
           <address className="footer-address">
             <MapPinIcon size={15} />
-            <span className="placeholder-pending">{site.address}</span>
+            <span>{site.address}</span>
           </address>
 
           {/* Redes sociales */}
@@ -199,7 +199,7 @@ export function Footer() {
           <a
             href={telUrl}
             className="footer-contact-row footer-contact-row--phone"
-            aria-label={`Llamar al ${site.phone.display}`}
+            aria-label="Llamar a la veterinaria"
           >
             <PhoneIcon size={16} />
             <span className="mono-data">{site.phone.display}</span>
@@ -211,7 +211,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="footer-contact-row footer-contact-row--whatsapp"
-            aria-label={`Escribir por WhatsApp al ${site.whatsapp.display}`}
+            aria-label="Escribir por WhatsApp a la veterinaria"
           >
             <WhatsAppIcon size={16} />
             <span className="mono-data">{site.whatsapp.display}</span>
@@ -265,11 +265,6 @@ export function Footer() {
                 <dt className="footer-hours-days">{hour.days}</dt>
                 <dd className="footer-hours-time mono-data">
                   {hour.open} – {hour.close}
-                  {hour.note && (
-                    <span className="footer-hours-note placeholder-pending">
-                      {' '}({hour.note})
-                    </span>
-                  )}
                 </dd>
               </div>
             ))}

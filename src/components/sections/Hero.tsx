@@ -325,7 +325,7 @@ export function Hero() {
             <a
               href={telUrl}
               className="hero-btn hero-btn--primary"
-              aria-label={`Llamar a urgencias veterinarias — ${site.phone.display}`}
+              aria-label="Llamar a urgencias veterinarias"
             >
               <PhoneIcon size={20} />
               <span>{site.copy.callToAction}</span>
@@ -336,7 +336,7 @@ export function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               className="hero-btn hero-btn--whatsapp"
-              aria-label={`Escribir a urgencias por WhatsApp — ${site.whatsapp.display}`}
+              aria-label="Escribir a urgencias por WhatsApp"
             >
               <WhatsAppIcon size={20} />
               <span>{site.copy.whatsappCTA}</span>

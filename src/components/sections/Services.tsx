@@ -365,6 +365,11 @@ function EmergencyServiceCard({ service }: { service: Service }) {
       {/* Pulso sutil de fondo */}
       <div className="service-card__emergency-glow" aria-hidden="true" />
 
+      {/* Badge hospitalario — coherencia visual con sección Urgencias */}
+      <span className="service-card__hospital-badge" aria-hidden="true">
+        GUARDIA 24 HS
+      </span>
+
       <div className="service-card__icon-wrap service-card__icon-wrap--emergency" aria-hidden="true">
         <ServiceIcon icon={service.icon} size={28} />
       </div>
@@ -381,7 +386,7 @@ function EmergencyServiceCard({ service }: { service: Service }) {
         <a
           href={telUrl}
           className="service-card__cta service-card__cta--phone"
-          aria-label={`Llamar a urgencias veterinarias — ${site.phone.display}`}
+          aria-label="Llamar a urgencias veterinarias"
           style={{ pointerEvents: 'auto' }}
         >
           <IconPhone size={16} />
@@ -392,7 +397,7 @@ function EmergencyServiceCard({ service }: { service: Service }) {
           target="_blank"
           rel="noopener noreferrer"
           className="service-card__cta service-card__cta--whatsapp"
-          aria-label={`Escribir por WhatsApp a urgencias — ${site.whatsapp.display}`}
+          aria-label="Escribir por WhatsApp a urgencias"
           style={{ pointerEvents: 'auto' }}
         >
           <IconWhatsApp size={16} />
@@ -500,11 +505,6 @@ export function Services() {
           ))}
         </div>
 
-        {/* ── Nota de placeholder — lista de servicios pendiente ───── */}
-        <p className="services-placeholder-note" aria-hidden="true">
-          * Lista de servicios a confirmar con el cliente — actualizar en{' '}
-          <code>src/data/site.ts</code>
-        </p>
       </div>
     </section>
   )

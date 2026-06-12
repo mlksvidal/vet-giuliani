@@ -8,6 +8,7 @@ import { useLenis } from './hooks/useLenis'
 import { EmergencyCTA } from './components/ui/EmergencyCTA'
 import { Nav } from './components/ui/Nav'
 import { Hero } from './components/sections/Hero'
+import { Urgencias } from './components/sections/Urgencias'
 import { Services } from './components/sections/Services'
 import { About } from './components/sections/About'
 import { LocationHours } from './components/sections/LocationHours'
@@ -34,6 +35,9 @@ function App() {
       <main id="main-content" role="main">
         {/* ── Hero — Tarea 3 ✅ ────────────────────────────────────────── */}
         <Hero />
+
+        {/* ── Urgencias — Tarea 8 ✅ — bloque oscuro cohesivo con Hero ── */}
+        <Urgencias />
 
         {/* ── Servicios — Tarea 4 ✅ ──────────────────────────────────── */}
         <Services />

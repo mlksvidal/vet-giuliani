@@ -13,4 +13,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://PENDIENTE-URL.com/sitemap.xml
+Sitemap: https://vet-giuliani.vercel.app/sitemap.xml

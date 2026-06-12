@@ -82,6 +82,7 @@ function CloseIcon() {
 /* ─── Datos de navegación ──────────────────────────────────────────────── */
 
 const NAV_LINKS = [
+  { label: 'Urgencias', href: '#urgencias' },
   { label: 'Servicios', href: '#servicios' },
   { label: 'Sobre Luciano', href: '#sobre' },
   { label: 'Ubicación', href: '#ubicacion' },

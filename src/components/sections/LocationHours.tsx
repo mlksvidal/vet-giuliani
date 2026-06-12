@@ -193,10 +193,7 @@ export function LocationHours() {
               <div className="location-card__body">
                 <h3 className="location-card__title">Dirección</h3>
                 <p className="location-card__text">
-                  <span className="placeholder-pending">{site.address}</span>
-                </p>
-                <p className="location-card__note">
-                  * Dirección a confirmar con el cliente antes de publicar.
+                  {site.address}
                 </p>
               </div>
             </div>
@@ -219,18 +216,10 @@ export function LocationHours() {
                         <td className="location-hours-time mono-data">
                           {formatHour(entry)}
                         </td>
-                        {entry.note && (
-                          <td className="location-hours-note">
-                            <span className="placeholder-pending">{entry.note}</span>
-                          </td>
-                        )}
                       </tr>
                     ))}
                   </tbody>
                 </table>
-                <p className="location-card__note">
-                  * Horarios a confirmar con el cliente antes de publicar.
-                </p>
               </div>
             </div>
 
@@ -259,7 +248,7 @@ export function LocationHours() {
               <a
                 href={telUrl}
                 className="location-btn location-btn--phone"
-                aria-label={`Llamar al ${site.phone.display}`}
+                aria-label="Llamar a la veterinaria"
               >
                 {site.phone.display}
               </a>
@@ -272,7 +261,7 @@ export function LocationHours() {
             <div className="location-map-wrapper">
               {/* Nota de ubicación aproximada visible antes del iframe */}
               <p className="location-map-note" role="note">
-                Ubicación aproximada — confirmar dirección exacta con el cliente.
+                Ubicación en San Rafael, Mendoza.
               </p>
               <iframe
                 title={`Mapa de ubicación de ${site.businessName} en ${site.city}`}

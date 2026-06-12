@@ -1057,6 +1057,25 @@ section {
   border-color: var(--color-primary-dark); /* #A33820 */
   /* Override shadow con acento terracota */
   box-shadow: var(--shadow-accent, 0 8px 24px rgba(196, 75, 43, 0.35));
+  /* border-radius 4px en top: visual hospital — el resto usa radius-md */
+  border-radius: 4px;
+}
+
+/* Badge hospitalario — DM Mono, señalética tipo sección Urgencias */
+.service-card__hospital-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.625rem; /* 10px */
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background-color: rgba(0, 0, 0, 0.25);
+  color: #FFFFFF;
+  border-radius: 3px; /* angular — lenguaje hospitalario */
+  padding: 0.25rem 0.5rem;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Glow pulsante de fondo (solo no-preference) */
@@ -2483,4 +2502,494 @@ section {
 .footer-copy--disclaimer {
   font-style: italic;
   /* fix-1: opacity:0.7 removida — reducía #5C3A1E a ~#BA967B (2.35:1 FAIL); hereda #5C3A1E del padre */
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   URGENCIAS — Sección estética hospitalaria warm
+   Tarea 8 · spec #925 · border-radius 3-4px (discriminador médico vs 8-16px del sitio)
+
+   Paleta scoped:
+   --urgencias-bg:              #1A0F08  (chocolate — bloque oscuro con Hero)
+   --urgencias-text:            #FDF8F3  (crema — 16.3:1 ✅ AAA sobre bg)
+   --urgencias-text-secondary:  #C4A882  (beige — 5.73:1 ✅ AA)
+   --urgencias-accent:          #C44B2B  (terracota)
+   --urgencias-accent-bright:   #E05C36  (terracota bright — 4.52:1 ✅ AA ≥18px bold)
+   --urgencias-vitals-bg:       rgba(196,75,43,0.08)
+   --urgencias-border:          rgba(196,75,43,0.2)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Sección wrapper ─────────────────────────────────────────────────── */
+.urgencias-section {
+  background-color: #1A0F08;
+  position: relative;
+  overflow: hidden;
+  padding-block: var(--space-section);
+  /* Sin transición hacia arriba: el hero ya es #1A0F08 — bloque oscuro cohesivo */
+}
+
+/* ── Grid layout ────────────────────────────────────────────────────── */
+.urgencias-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .urgencias-grid {
+    grid-template-columns: 55fr 45fr;
+    gap: 4rem;
+    align-items: start;
+  }
+}
+
+.urgencias-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ── Eyebrow señalética terminal ────────────────────────────────────── */
+.urgencias-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #E0703F;
+  letter-spacing: 0.05em;
+  text-transform: none; /* ya tiene el formato con doble slash */
+  margin: 0;
+  max-width: none;
+  line-height: 1.4;
+}
+
+/* ── Badges hospitalarios ───────────────────────────────────────────── */
+.urgencias-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  align-items: center;
+}
+
+.urgencias-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem; /* 11px */
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  padding: 0.375rem 0.625rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.urgencias-badge--guardia {
+  background-color: #C44B2B;
+  color: #FFFFFF; /* 4.71:1 ✅ AA */
+}
+
+.urgencias-badge__cross {
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  width: 14px;
+  height: 14px;
+}
+
+.urgencias-badge__cross svg {
+  width: 14px;
+  height: 14px;
+}
+
+.urgencias-badge--disponible {
+  background-color: transparent;
+  color: #FDF8F3; /* 16.3:1 ✅ AAA */
+  border: 1.5px solid #C44B2B;
+}
+
+/* Blink dot */
+.urgencias-blink-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #E05C36;
+  flex-shrink: 0;
+}
+
+/* Animación blink — CSS pura, respeta prefers-reduced-motion */
+@media (prefers-reduced-motion: no-preference) {
+  .urgencias-blink-dot {
+    animation: urgencias-blink 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes urgencias-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+/* ── Heading ────────────────────────────────────────────────────────── */
+.urgencias-heading {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: #FDF8F3; /* 16.3:1 ✅ AAA */
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.urgencias-heading__accent {
+  color: #E05C36; /* terracota bright — 4.52:1 ✅ AA en 28px+ bold */
+}
+
+/* ── Subcopy ────────────────────────────────────────────────────────── */
+.urgencias-subcopy {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: #C4A882; /* beige — 5.73:1 ✅ AA */
+  line-height: 1.7;
+  margin: 0;
+  max-width: 46ch;
+}
+
+/* ── Vitals cards ───────────────────────────────────────────────────── */
+.urgencias-vitals {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+@media (max-width: 479px) {
+  /* Mobile pequeño: scroll horizontal con snap — más legible que apilar */
+  .urgencias-vitals {
+    grid-template-columns: repeat(3, minmax(120px, 1fr));
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+    /* Ocultar scrollbar visual */
+    scrollbar-width: none;
+  }
+  .urgencias-vitals::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.urgencias-vital-card {
+  background: rgba(196, 75, 43, 0.08);
+  border: 1px solid rgba(196, 75, 43, 0.2);
+  border-radius: 4px; /* hospitalario — más angular que el 8-16px del resto */
+  padding: 0.875rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  scroll-snap-align: start;
+}
+
+.urgencias-vital-label {
+  font-family: var(--font-mono);
+  font-size: 0.625rem; /* 10px */
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #A8866F; /* ratio 5.28:1 sobre #28140b — WCAG AA ✓ */
+  line-height: 1.2;
+}
+
+.urgencias-vital-value {
+  font-family: var(--font-mono);
+  font-size: 1.375rem; /* 22px */
+  font-weight: 700;
+  color: #E05C36; /* 4.52:1 ✅ AA — texto grande bold */
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.urgencias-vital-unit {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 400;
+  color: #C4A882; /* 5.73:1 ✅ AA */
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+}
+
+/* ── CTAs ───────────────────────────────────────────────────────────── */
+.urgencias-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.urgencias-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 3px; /* hospitalario */
+  padding: 0.75rem 1.25rem;
+  min-height: var(--space-cta-tap);
+  cursor: pointer;
+  transition: filter var(--duration-fast) var(--ease-out),
+              transform var(--duration-fast) var(--ease-out);
+  text-decoration: none;
+  line-height: 1;
+}
+
+.urgencias-btn:hover {
+  transform: translateY(-2px);
+}
+
+.urgencias-btn:active {
+  transform: translateY(0);
+}
+
+.urgencias-btn--call {
+  background-color: #C44B2B;
+  color: #FFFFFF; /* 4.71:1 ✅ AA */
+}
+
+.urgencias-btn--call:hover {
+  background-color: #C44B2B;
+  filter: brightness(1.12);
+  color: #FFFFFF;
+}
+
+.urgencias-btn--whatsapp {
+  background-color: rgba(37, 211, 102, 0.12);
+  color: #25D366;
+  border: 1.5px solid rgba(37, 211, 102, 0.3);
+  /* Nota: texto #25D366 sobre rgba(37,211,102,0.12)+#1A0F08 ≈ #25D366 sobre bg ~#1D1C11 = 9.8:1 ✅ AAA */
+}
+
+.urgencias-btn--whatsapp:hover {
+  background-color: rgba(37, 211, 102, 0.18);
+  color: #25D366;
+  border-color: rgba(37, 211, 102, 0.5);
+}
+
+/* ── Triage grid ────────────────────────────────────────────────────── */
+.urgencias-triage {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.urgencias-triage__heading {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: #FDF8F3; /* 16.3:1 ✅ AAA */
+  margin: 0;
+  line-height: 1.2;
+}
+
+.urgencias-triage__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.urgencias-triage-card {
+  border-radius: 4px; /* hospitalario */
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+/* Colores warm de triage — granate/dorado/forest, NO azul/verde frío */
+.urgencias-triage-card--red {
+  background: rgba(127, 0, 0, 0.3);
+  border: 1px solid rgba(180, 0, 0, 0.4);
+}
+
+.urgencias-triage-card--yellow {
+  background: rgba(139, 105, 20, 0.3);
+  border: 1px solid rgba(180, 140, 0, 0.4);
+}
+
+.urgencias-triage-card--green {
+  background: rgba(27, 94, 32, 0.3);
+  border: 1px solid rgba(30, 130, 40, 0.4);
+}
+
+.urgencias-triage-card__level {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #FDF8F3; /* 16.3:1 ✅ AAA */
+  line-height: 1;
+}
+
+.urgencias-triage-card__examples {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: #C4A882; /* 5.73:1 ✅ AA */
+  margin: 0;
+  max-width: none;
+  line-height: 1.5;
+}
+
+/* ── Protocolo de emergencia ────────────────────────────────────────── */
+.urgencias-protocolo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.urgencias-protocolo__heading {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: #FDF8F3; /* 16.3:1 ✅ AAA */
+  margin: 0;
+  line-height: 1.2;
+}
+
+.urgencias-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.urgencias-step {
+  display: flex;
+  align-items: baseline;
+  gap: 0.875rem;
+  padding-block: 0.875rem;
+  border-bottom: 1px solid rgba(196, 75, 43, 0.2);
+}
+
+.urgencias-step:last-child {
+  border-bottom: none;
+}
+
+.urgencias-step__num {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #E0703F;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  min-width: 2ch;
+}
+
+.urgencias-step__body {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: #C4A882; /* 5.73:1 ✅ AA */
+  line-height: 1.6;
+}
+
+.urgencias-step__title {
+  color: #FDF8F3; /* 16.3:1 ✅ AAA */
+  font-weight: 600;
+}
+
+.urgencias-step__desc {
+  color: #C4A882;
+}
+
+.urgencias-step__desc strong {
+  color: #FDF8F3;
+  font-weight: 600;
+}
+
+/* ── ECG decorativa ─────────────────────────────────────────────────── */
+.urgencias-ecg-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.15;
+}
+
+.urgencias-ecg {
+  width: 100%;
+  height: 60px;
+  display: block;
+}
+
+/* ECG stroke-dashoffset animation — solo bajo no-preference */
+@media (prefers-reduced-motion: no-preference) {
+  .urgencias-ecg__path {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    animation: urgencias-ecg-draw 4s linear infinite;
+  }
+}
+
+@keyframes urgencias-ecg-draw {
+  0%   { stroke-dashoffset: 2000; }
+  60%  { stroke-dashoffset: 0;    }
+  100% { stroke-dashoffset: -2000; }
+}
+
+/* ── Reducción de movimiento global (obligatorio motion_intensity 9) ── */
+@media (prefers-reduced-motion: reduce) {
+  .urgencias-ecg__path {
+    animation: none;
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+    opacity: 1; /* visible estático */
+  }
+  .urgencias-blink-dot {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* ── Mobile-first overrides ─────────────────────────────────────────── */
+@media (max-width: 767px) {
+  /* En mobile: columna derecha sube — protocolo + triage más visibles */
+  .urgencias-col--right {
+    order: -1;
+  }
+
+  .urgencias-subcopy {
+    max-width: none;
+  }
+
+  .urgencias-btn {
+    flex: 1 1 auto;
+    justify-content: center;
+    min-width: 140px;
+  }
+
+  .urgencias-vitals {
+    /* 3 columnas iguales — caben en 375px si el texto es compacto */
+    grid-template-columns: repeat(3, 1fr);
+    overflow-x: visible; /* reset del auto en ≤479px que ya está en la regla de arriba */
+  }
+}
+
+@media (max-width: 399px) {
+  /* 375px o menos: vitals en scroll horizontal con snap */
+  .urgencias-vitals {
+    grid-template-columns: repeat(3, minmax(110px, 1fr));
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+    scrollbar-width: none;
+    gap: 0.5rem;
+  }
+  .urgencias-vitals::-webkit-scrollbar {
+    display: none;
+  }
 }

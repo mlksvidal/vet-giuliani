@@ -21,14 +21,14 @@ export const site: SiteData = {
     // Formato E.164: +549 + código de área + número (sin 0 ni 15)
     // San Rafael código de área: 2604
     e164: '+5492604XXXXXX',
-    display: '+54 9 2604 XX-XXXX',
+    display: 'Llamar a urgencias',
   },
 
   whatsapp: {
     // PLACEHOLDER: reemplazar con el número de WhatsApp real
     // Generalmente es el mismo que phone pero puede ser distinto
     e164: '+5492604XXXXXX',
-    display: '+54 9 2604 XX-XXXX',
+    display: 'Escribir por WhatsApp',
   },
 
   // PLACEHOLDER: ajustar el mensaje si el cliente prefiere otro texto
@@ -39,8 +39,8 @@ export const site: SiteData = {
   whatsappGeneralMessage:
     'Hola, quisiera hacer una consulta sobre los servicios veterinarios.',
 
-  // PLACEHOLDER: reemplazar con la dirección exacta del consultorio
-  address: 'San Rafael, Mendoza — dirección a confirmar',
+  // PLACEHOLDER: reemplazar con la dirección exacta del consultorio (calle y número)
+  address: 'San Rafael, Mendoza',
 
   // PLACEHOLDER: reemplazar con la dirección exacta para el embed de Maps
   // Formato: "Nombre Calle Número, San Rafael, Mendoza"
@@ -52,21 +52,18 @@ export const site: SiteData = {
       // PLACEHOLDER: confirmar horarios exactos con el cliente
       open: '9:00',
       close: '13:00',
-      note: 'Confirmar horario exacto',
     },
     {
       days: 'Lunes a Viernes',
       // PLACEHOLDER: confirmar si hay turno tarde
       open: '17:00',
       close: '21:00',
-      note: 'Confirmar horario exacto',
     },
     {
       days: 'Sábados',
       // PLACEHOLDER: confirmar horario del sábado
       open: '9:00',
       close: '13:00',
-      note: 'Confirmar horario exacto',
     },
     {
       days: 'Urgencias',
